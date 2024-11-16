@@ -2,7 +2,7 @@
     <div class="grid grid-cols-12 gap-4">
         <div class="xl:col-span-8 xl:col-start-2">
             <div class="flex flex-wrap">
-                <h1 class="mb-4">Pokedex</h1>
+                <h1 class="mb-4 font-mono font-semibold text-neutral-900 text-2xl">Pokedex</h1>
                 <div *ngFor="let pokemon of pokemons; let i = index" class="md:col-span-6">
                     <div class="p4 mb-3  shadow-md rounded-lg" [ngClass]="getType(pokemon)" [routerLink]="['/view',pokemon.name]">
                         <div class="p-4">

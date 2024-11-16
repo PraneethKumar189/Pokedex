@@ -7,7 +7,7 @@ import { TitleCasePipe } from '@angular/common';
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [NgFor,RouterLink,TitleCasePipe,NgIf,RouterOutlet,NgClass],
+  imports: [NgFor,RouterLink,TitleCasePipe,RouterOutlet,NgClass],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
