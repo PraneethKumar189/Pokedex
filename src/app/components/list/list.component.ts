@@ -35,7 +35,7 @@ export class ListComponent implements OnInit,OnDestroy {
 
 
 
-  loading:boolean=true;
+  loading:boolean=false;
   subscriptions:Subscription[]=[];
   constructor(private api:ApiserviceService) {}
  

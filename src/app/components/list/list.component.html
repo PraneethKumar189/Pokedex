@@ -21,9 +21,9 @@
             </div>
         </div>
     </div>
-    <div class="grid grid-cols-12 gap-4">
+    <div class="flex flex-wrap">
         <div class="sm:text-center">
-            <button class="px-4 py-2 text-sm bg-gray-500 text-white rounded hover:bg-gray-600" (click)="loadmore()">
+            <button class="px-2 py-2 ml-28 h-[35px] w-[70px] text-sm bg-gray-500 text-white rounded-full hover:bg-gray-600" (click)="loadmore()">
                 <div class="border-4 border-t-transparent border-gray-300 rounded-full w-6 h-6 animate-spin" *ngIf="loading" role="status">
                     {{loading ? 'Loading...':'Load More'}}
                 </div>
