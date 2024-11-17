@@ -2,11 +2,12 @@ import { Component, OnInit,OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiserviceService } from '../../services/apiservice.service';
+import { NgFor, NgIf, TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-view',
   standalone: true,
-  imports: [],
+  imports: [NgIf,TitleCasePipe,NgFor],
   templateUrl: './view.component.html',
   styleUrl: './view.component.css'
 })

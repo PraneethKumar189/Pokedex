@@ -1,0 +1,18 @@
+<ng-container *ngIf="pokemon">
+    <div class="py-5">
+        <div class="container mx-auto p-5 ">
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-1/3 px-4">
+                    <div class="mt-2">
+                        <h1>{{pokemon.name|titlecase}}</h1>
+                        <span *ngFor="let type of pokemon.types" class="inline-block px-2 py-1 text-sm font-medium border rounded-full mr-1">
+                            {{type.type.name | titlecase}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</ng-container>
