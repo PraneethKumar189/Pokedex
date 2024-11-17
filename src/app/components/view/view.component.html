@@ -10,12 +10,21 @@
                         </span>
                     </div>
                     <ul class="divide-y border-0 mt-4" style="width: 20rem;">
-          
+                        <li class="py-2">Experience <b class="float-end">{{pokemon.base_experience}}</b></li>
+                        <li class="py-2">Height <b class="float-end">{{pokemon.height}}</b></li>
+                        <li class="py-2">Weight <b class="float-end">{{pokemon.weight}}</b></li>
+                
                     </ul>
+                    <div class="w-1/3 px-4"> 
+                        <img class="w-full block mx-auto" style="width: 300px;" src="https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/other/official-artwork/{{pokemon.id}}.png" alt=""> 
+                    </div>
                 </div>
             </div>
         </div>
 
+    </div>
+    <div class="shadow border rounded mb-3 p-4">
+        <h4 class="text-lg font-bold mb-2">Stats</h4>
     </div>
 
 </ng-container>
