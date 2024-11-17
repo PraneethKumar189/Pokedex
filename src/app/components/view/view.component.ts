@@ -39,6 +39,7 @@ set subscription(subscription:Subscription){
 
       },error=>console.log('Error Occured:',error))
     })
+    this.getDescription()
   }
   ngOnDestroy():void{
          this.subscriptions.forEach(subscription=>subscription ? subscription.unsubscribe():0)
@@ -47,8 +48,10 @@ set subscription(subscription:Subscription){
     if (!this.pokemon.evolutions || !this.pokemon.evolutions.length){
       this.pokemon.evolutions=[]
       this.subscription=this.pokemonservice.getSpecies(this.pokemon.name).subscribe(response=>{
-        const id =this.getId(response.evolution_chain.url);
+        const id:any =this.getId(response.evolution_chain.url);
+        localStorage.setItem('sid',id)
        // this.subscriptions.push()
+       console.log(this.subscriptions)
         this.subscription=this.pokemonservice.getEvalution(id).subscribe(response=> this.getEvolves(response.chain));
         console.log(response)
       })
@@ -67,6 +70,15 @@ set subscription(subscription:Subscription){
     const spliturl=url.split('/');
     return +spliturl[spliturl.length-2]
   }
-
-
+ desc:string='';
+  getDescription(){
+    const id:any=localStorage.getItem('sid');
+    
+    return this.pokemonservice.getSpeciesbyid(id).subscribe(data=>{
+      
+      this.desc=data.flavor_text_entries[0].flavor_text;
+      console.log(this.desc)
+    })
+      
+  }
 }

@@ -45,4 +45,9 @@ private _next:string='';
   return this.http.get(url)
   
  }
+ getSpeciesbyid(id:any):Observable<any>{
+  const url=`https://pokeapi.co/api/v2/pokemon-species/${id}`
+  return this.http.get(url)
+  
+ }
 }
