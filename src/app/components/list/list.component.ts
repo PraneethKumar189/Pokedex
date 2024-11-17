@@ -65,6 +65,7 @@ loadmore():void {
     const details=response.results.map((i:any)=>this.api.get(i.name));
     this.subscription=concat(...details).subscribe((response:any)=>{
       this.api.pokemons.push(response);
+      console.log(response)
     });
   
   }, error=>console.log('Error Occured:',error),()=>this.loading=false);
@@ -73,7 +74,7 @@ loadmore():void {
 getType(pokemon:any):string{
   
  // const info=this.api.getType(pokemon);
-  console.log(pokemon.type)
+  //console.log(pokemon.type)
   //return this.api.getType(pokemon);
   return this.typeColorMap[pokemon.types[0].type.name] || 'bg-gray-500';
 }
