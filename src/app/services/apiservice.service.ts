@@ -37,11 +37,12 @@ private _next:string='';
     return this.http.get(url)
  }
  getEvalution(id:number):Observable<any>{
-  const url=`https://pokeapi.co/api/v2/pokemon/evolution-chain/${id}`
+  const url=`https://pokeapi.co/api/v2/evolution-chain/${id}`
   return this.http.get(url)
  }
  getSpecies(name:string):Observable<any>{
-  const url=`https://pokeapi.co/api/v2/pokemon/pokemon-species/${name}`
+  const url=`https://pokeapi.co/api/v2/pokemon-species/${name}`
   return this.http.get(url)
+  
  }
 }

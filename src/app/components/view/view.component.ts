@@ -1,5 +1,5 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiserviceService } from '../../services/apiservice.service';
 import { NgFor, NgIf, TitleCasePipe } from '@angular/common';
@@ -7,7 +7,7 @@ import { NgFor, NgIf, TitleCasePipe } from '@angular/common';
 @Component({
   selector: 'app-view',
   standalone: true,
-  imports: [NgIf,TitleCasePipe,NgFor],
+  imports: [NgIf,TitleCasePipe,NgFor,RouterLink,RouterOutlet],
   templateUrl: './view.component.html',
   styleUrl: './view.component.css'
 })
@@ -28,8 +28,11 @@ set subscription(subscription:Subscription){
         if(this.pokemon){
           this.getEvolution();
           return;
+
+          
         }
       }
+       console.log(params['name'])
       this.subscription=this.pokemonservice.get(params['name']).subscribe(response=>{
         this.pokemon=response;
         this.getEvolution();
@@ -45,12 +48,14 @@ set subscription(subscription:Subscription){
       this.pokemon.evolutions=[]
       this.subscription=this.pokemonservice.getSpecies(this.pokemon.name).subscribe(response=>{
         const id =this.getId(response.evolution_chain.url);
+       // this.subscriptions.push()
         this.subscription=this.pokemonservice.getEvalution(id).subscribe(response=> this.getEvolves(response.chain));
+        console.log(response)
       })
     }
   }
   getEvolves(chain: any): void {
-    this.pokemon.evolution.push({
+    this.pokemon.evolutions.push({
       id:this.getId(chain.species.url),
       name:chain.species.name
     });
