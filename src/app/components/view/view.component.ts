@@ -49,7 +49,7 @@ set subscription(subscription:Subscription){
       this.pokemon.evolutions=[]
       this.subscription=this.pokemonservice.getSpecies(this.pokemon.name).subscribe(response=>{
         const id:any =this.getId(response.evolution_chain.url);
-        localStorage.setItem('sid',id)
+        sessionStorage.setItem('sid',id)
        // this.subscriptions.push()
        console.log(this.subscriptions)
         this.subscription=this.pokemonservice.getEvalution(id).subscribe(response=> this.getEvolves(response.chain));
@@ -72,7 +72,7 @@ set subscription(subscription:Subscription){
   }
  desc:string='';
   getDescription(){
-    const id:any=localStorage.getItem('sid');
+    const id:any=sessionStorage.getItem('sid');
     
     return this.pokemonservice.getSpeciesbyid(id).subscribe(data=>{
       

@@ -1,13 +1,13 @@
-<div class="container mx-auto my-5">
-    <div class="grid grid-cols-12 gap-4">
+<div class="container mx-auto my-5 ">
+    <div class="">
         <div class="xl:col-span-8 xl:col-start-2">
-            <div class="flex flex-wrap">
+            <div class="flex flex-wrap align-middle justify-start">
                 <h1 class="mb-4 font-mono font-semibold text-neutral-900 text-2xl">Pokedex</h1>
                 <div *ngFor="let pokemon of pokemons; let i = index" class="md:col-span-6">
                     <div class="p4 mb-3  shadow-md rounded-lg" [ngClass]="getType(pokemon)" [routerLink]="['/view',pokemon.name]">
                         <div class="p-4">
                             <div class="grid grid-cols-12 gap-4">
-                                <div class="col-span-7 sm:col-span-8">
+                                <div class="col-span-7 sm:col-span-8 ">
                                     <h3 class="text-xl font-semibold mb-2">{{pokemon.name | titlecase}}</h3>
                                     <span *ngFor="let type of pokemon.types" class="inline-block border rounded-full mr-1  py-1 px-3 text-black"  [ngClass]="getType(pokemon)">{{type.type.name | titlecase}}</span>
                                 </div>
