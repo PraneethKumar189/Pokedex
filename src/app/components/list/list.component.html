@@ -1,8 +1,8 @@
 <div>
-            <div class="flex m-auto flex-col justify-center bg-slate-100">
-                <h1 class="font-mono font-semibold text-gray-500 text-2xl m-auto">Pokédex</h1>
-                <div *ngFor="let pokemon of pokemons; let i = index" class="flex flex-wrap align-middle justify-center w-[600px]  m-auto">
-                    <div class="p4 mb-6 w-[600px] h-[300px] shadow-2xl rounded-lg" [ngClass]="getType(pokemon)" [routerLink]="['/view',pokemon.name]">
+            <div class="flex m-auto flex-col justify-center bg-slate-100 ">
+                <h1 class="font-mono font-semibold text-gray-500 text-2xl m-0 md::mx-auto">Pokédex</h1>
+                <div *ngFor="let pokemon of pokemons; let i = index" class="flex flex-wrap align-middle justify-center w-[600px]  m-auto ">
+                    <div class="p4 mb-6 w-[200px] h-[150px] shadow-2xl rounded-lg" [ngClass]="getType(pokemon)" [routerLink]="['/view',pokemon.name]">
                         
                             <div class="flex flex-row">
                                 <div class="ml-3 mt-3 ">
