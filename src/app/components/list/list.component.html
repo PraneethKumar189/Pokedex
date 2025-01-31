@@ -1,31 +1,29 @@
-<div>
-            <div class="flex m-auto flex-col justify-center bg-slate-100 p-0 ">
-                <h1 class="font-mono font-semibold text-gray-500 text-2xl p-0 md::mx-auto">Pokédex</h1>
-                <div *ngFor="let pokemon of pokemons; let i = index" class="flex flex-wrap align-middle justify-center w-[200px]  m-0 ">
-                    <div class="p4 mb-6 w-[200px] h-[150px] shadow-2xl  rounded-lg" [ngClass]="getType(pokemon)" [routerLink]="['/view',pokemon.name]">
-                        
-                            <div class="flex flex-row">
-                                <div class="ml-3 mt-3 ">
-                                    <h3 class="text-xl font-semibold mb-2  ">{{pokemon.name | titlecase}}</h3>
-                                    <span *ngFor="let type of pokemon.types" class="inline-block border rounded-full mr-1  py-1 px-3 text-black"  [ngClass]="getType(pokemon)">{{type.type.name | titlecase}}</span>
-                                </div>
-                                <div class="w-[200px] h-auto m-auto mt-12">
-                                    <img src="https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/other/official-artwork/{{pokemon.id}}.png" alt="pokemon" class="w-full h-auto">
-                                </div>
-                            </div>
-                        
+<div class="flex justify-center items-center min-h-screen min-w-max bg-slate-100">
+    <div class="flex flex-col items-center justify-center">
+        <h1 class="font-mono mt-6 font-semibold text-gray-500 text-2xl p-0 md:mx-auto">Pokédex</h1>
+        <div *ngFor="let pokemon of pokemons; let i = index" class="flex flex-wrap items-center justify-center w-96 md:w-full">
+            <div class="p4 mb-12 w-96 md:w-full h-auto shadow-2xl rounded-lg" [ngClass]="getType(pokemon)" [routerLink]="['/view',pokemon.name]">
+                <div class="flex flex-row">
+                    <div class="ml-3 mt-3">
+                        <h3 class="text-xl font-semibold mb-2">{{pokemon.name | titlecase}}</h3>
+                        <span *ngFor="let type of pokemon.types" class="inline-block border rounded-full mr-1 py-1 px-3 text-black" [ngClass]="getType(pokemon)">{{type.type.name | titlecase}}</span>
+                    </div>
+                    <div class="md:w-[300px] h-auto m-auto mt-12">
+                        <img src="https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/other/official-artwork/{{pokemon.id}}.png" alt="pokemon" class="w-full h-auto">
                     </div>
                 </div>
             </div>
-   
-    <div class="flex flex-wrap">
-        <div class="sm:text-center">
-            <button class="px-4 py-2 ml-28 h-[40px] w-fit text-sm bg-gray-500 text-white rounded-full hover:bg-gray-600" (click)="loadmore()">
-        
-                    {{loading ? 'Loading...':'Load More'}}
-            </button>
-
         </div>
+    </div>
+
+</div>
+<div class="flex align-middle justify-center mb-6" >
+    <div class="sm:text-center">
+        <button class="px-4 py-2  h-[40px] w-fit text-sm bg-gray-500 text-white rounded-full hover:bg-gray-600" (click)="loadmore()">
+    
+                {{loading ? 'Loading...':'Load More'}}
+        </button>
+
     </div>
 </div>
 <router-outlet></router-outlet>
