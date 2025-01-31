@@ -2,7 +2,7 @@
     <div class="flex flex-col items-center justify-center">
         <h1 class="font-mono mt-6 font-semibold text-gray-500 text-2xl p-0 md:mx-auto">Pokédex</h1>
         <div *ngFor="let pokemon of pokemons; let i = index" class="flex flex-wrap items-center justify-center w-96 md:w-full">
-            <div class="p4 mb-12 w-96 md:w-full h-auto shadow-2xl rounded-lg" [ngClass]="getType(pokemon)" [routerLink]="['/view',pokemon.name]">
+            <div class="p4 mb-12 w-96 md:w-full h-auto shadow-2xl rounded-lg" [ngClass]="getType(pokemon)" (click)="setId(pokemon.id)" [routerLink]="['/view',pokemon.name]">
                 <div class="flex flex-row">
                     <div class="ml-3 mt-3">
                         <h3 class="text-xl font-semibold mb-2">{{pokemon.name | titlecase}}</h3>

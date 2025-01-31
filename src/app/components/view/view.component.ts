@@ -12,6 +12,8 @@ import { NgFor, NgIf, TitleCasePipe } from '@angular/common';
   styleUrl: './view.component.css'
 })
 export class ViewComponent implements OnInit,OnDestroy{
+
+
 pokemon:any=null;
 subscriptions:Subscription[]=[];
 
@@ -49,7 +51,7 @@ set subscription(subscription:Subscription){
       this.pokemon.evolutions=[]
       this.subscription=this.pokemonservice.getSpecies(this.pokemon.name).subscribe(response=>{
         const id:any =this.getId(response.evolution_chain.url);
-        sessionStorage.setItem('sid',id)
+    
        // this.subscriptions.push()
        console.log(this.subscriptions)
         this.subscription=this.pokemonservice.getEvalution(id).subscribe(response=> this.getEvolves(response.chain));
@@ -72,8 +74,8 @@ set subscription(subscription:Subscription){
   }
  desc:string='';
   getDescription(){
-    const id:any=sessionStorage.getItem('sid');
-    
+    const id:any=localStorage.getItem('sid');
+    console.log(id)
     return this.pokemonservice.getSpeciesbyid(id).subscribe(data=>{
       
       this.desc=data.flavor_text_entries[0].flavor_text;

@@ -78,7 +78,10 @@ getType(pokemon:any):string{
   //return this.api.getType(pokemon);
   return this.typeColorMap[pokemon.types[0].type.name] || 'bg-gray-500';
 }
-
+setId(id:any)
+{
+  localStorage.setItem('sid',id);
+}
   }
   
 
