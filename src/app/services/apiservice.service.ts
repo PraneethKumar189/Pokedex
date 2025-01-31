@@ -45,7 +45,8 @@ private _next:string='';
   return this.http.get(url)
   
  }
- getSpeciesbyid(id:any):Observable<any>{
+ getSpeciesbyid():Observable<any>{
+  const id:any=localStorage.getItem('sid');
   const url=`https://pokeapi.co/api/v2/pokemon-species/${id}`
   return this.http.get(url)
   

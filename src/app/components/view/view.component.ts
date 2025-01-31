@@ -73,14 +73,19 @@ set subscription(subscription:Subscription){
     return +spliturl[spliturl.length-2]
   }
  desc:string='';
+ setId(id:any){
+  localStorage.setItem('sid',id);
+}
   getDescription(){
-    const id:any=localStorage.getItem('sid');
-    console.log(id)
-    return this.pokemonservice.getSpeciesbyid(id).subscribe(data=>{
+   
+    
+    return this.pokemonservice.getSpeciesbyid().subscribe(data=>{
       
       this.desc=data.flavor_text_entries[0].flavor_text;
       console.log(this.desc)
+    
     })
       
   }
+  
 }

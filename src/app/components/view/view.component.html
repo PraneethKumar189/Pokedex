@@ -28,8 +28,8 @@
         </div>
 
     </div> 
-    <div class="shadow  border rounded mb-3 p-4" *ngFor="let evolution of pokemon.evolutions">
-        <div [routerLink]="['/view',evolution.name]">
+    <div class="shadow  border rounded mb-3 p-4" *ngFor="let evolution of pokemon.evolutions" >
+        <div [routerLink]="['/view',evolution.name] " (click)="setId(evolution.id)">
             <div>
                 <h4>{{evolution.name | titlecase}}</h4>
                 <img class="h-16 w-auto" src="https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/other/official-artwork/{{evolution.id}}.png" alt="">
