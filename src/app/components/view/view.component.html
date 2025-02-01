@@ -1,10 +1,10 @@
 <ng-container *ngIf="pokemon">
     <div class="py-5">
-        <div class="container mx-auto p-5 ">
+        <div class="container mx-auto p-5">
             <div class="flex flex-wrap -mx-4">
                 <div class="w-full px-4">
                     <div class="mt-2">
-                        <h1>{{pokemon.name|titlecase}}</h1>
+                        <h1>{{pokemon.name | titlecase}}</h1>
                         <span *ngFor="let type of pokemon.types" class="inline-block px-2 py-1 text-sm font-medium border rounded-full mr-1">
                             {{type.type.name | titlecase}}
                         </span>
@@ -14,32 +14,35 @@
                             <li class="py-2">Experience <b class="float-end">{{pokemon.base_experience}}</b></li>
                             <li class="py-2">Height <b class="float-end">{{pokemon.height}}</b></li>
                             <li class="py-2">Weight <b class="float-end">{{pokemon.weight}}</b></li>
-                    
                         </ul>
                         <div class="w-full px-4"> 
-                            <img class="w-full block mx-auto" style="width: 300px;" src="https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/other/official-artwork/{{pokemon.id}}.png" alt=""> 
+                            <img class="w-full block mx-auto" style="width: 300px;" 
+                                src="https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/other/official-artwork/{{pokemon.id}}.png" 
+                                alt=""> 
                             <p>{{desc}}</p>
                         </div>
                     </div>
-
-                    
+                    <div class="flex align-middle mt-7 justify-center">
+                        <button class="px-4 py-2 h-[40px] w-fit text-sm bg-gray-500 text-white rounded-full hover:bg-gray-600" [routerLink]="['/']">
+                            Home
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div> 
-    <div class="shadow  border rounded mb-3 p-4" *ngFor="let evolution of pokemon.evolutions" (click)="setId(evolution.id)">
-        <div [routerLink]="['/view',evolution.name] " (click)="setId(evolution.id)">
-            <div>
+
+    <div class="shadow rounded-md m-6 md:min-w-fit h-max w-auto mb-3 p-4" *ngFor="let evolution of pokemon.evolutions">
+        <div [routerLink]="['/view', evolution.name]" (click)="setId(evolution.id)">
+            <div >
                 <h4>{{evolution.name | titlecase}}</h4>
-                <img class="h-16 w-auto" src="https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/other/official-artwork/{{evolution.id}}.png" alt="">
+                <div class="flex align-middle justify-center">
+                    <img class="h-52  w-auto" src="https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/other/official-artwork/{{evolution.id}}.png" alt="">
+                </div>
+                
             </div>
         </div>
-        
-     <div>
-      
-     </div>
     </div>
-
 </ng-container>
+
 <router-outlet></router-outlet>
