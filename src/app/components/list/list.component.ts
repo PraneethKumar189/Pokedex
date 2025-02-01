@@ -4,6 +4,7 @@ import { ApiserviceService } from '../../services/apiservice.service';
 import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { TitleCasePipe } from '@angular/common';
+import { SharedService } from '../../services/shared.service';
 @Component({
   selector: 'app-list',
   standalone: true,
@@ -37,7 +38,7 @@ export class ListComponent implements OnInit,OnDestroy {
 
   loading:boolean=false;
   subscriptions:Subscription[]=[];
-  constructor(private api:ApiserviceService) {}
+  constructor(private api:ApiserviceService,private shared:SharedService) {}
  
    get pokemons():any[]{
     return this.api.pokemons;
@@ -80,7 +81,7 @@ getType(pokemon:any):string{
 }
 setId(id:any)
 {
-  localStorage.setItem('sid',id);
+  this.shared.updateData(id)
 }
   }
   

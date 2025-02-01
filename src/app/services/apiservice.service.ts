@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { SharedService } from './shared.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,8 @@ export class ApiserviceService {
   private url:string='https://pokeapi.co/api/v2/pokemon/'
 private _pokemons:any[]=[]
 private _next:string='';
-
-  constructor(private http:HttpClient) { }
+id:any;
+  constructor(private http:HttpClient,private shared:SharedService) { }
  get pokemons():any[]{
   return this._pokemons;
  }
@@ -46,8 +47,12 @@ private _next:string='';
   
  }
  getSpeciesbyid():Observable<any>{
-  const id:any=localStorage.getItem('sid');
-  const url=`https://pokeapi.co/api/v2/pokemon-species/${id}`
+ this.shared.currentData.subscribe(value =>{
+  this.id=value;
+ }
+ );
+  console.log(this.id);
+  const url=`https://pokeapi.co/api/v2/pokemon-species/${this.id}`
   return this.http.get(url)
   
  }

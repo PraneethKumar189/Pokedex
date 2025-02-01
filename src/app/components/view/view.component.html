@@ -28,7 +28,7 @@
         </div>
 
     </div> 
-    <div class="shadow  border rounded mb-3 p-4" *ngFor="let evolution of pokemon.evolutions" >
+    <div class="shadow  border rounded mb-3 p-4" *ngFor="let evolution of pokemon.evolutions" (click)="setId(evolution.id)">
         <div [routerLink]="['/view',evolution.name] " (click)="setId(evolution.id)">
             <div>
                 <h4>{{evolution.name | titlecase}}</h4>

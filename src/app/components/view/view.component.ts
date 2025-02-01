@@ -3,6 +3,7 @@ import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiserviceService } from '../../services/apiservice.service';
 import { NgFor, NgIf, TitleCasePipe } from '@angular/common';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-view',
@@ -17,7 +18,7 @@ export class ViewComponent implements OnInit,OnDestroy{
 pokemon:any=null;
 subscriptions:Subscription[]=[];
 
-constructor(private route:ActivatedRoute,private pokemonservice:ApiserviceService){}
+constructor(private route:ActivatedRoute,private pokemonservice:ApiserviceService,private shared:SharedService){}
 
 set subscription(subscription:Subscription){
   this.subscriptions.push(subscription);
@@ -74,7 +75,11 @@ set subscription(subscription:Subscription){
   }
  desc:string='';
  setId(id:any){
-  localStorage.setItem('sid',id);
+  this.shared.updateData(id);
+  console.log(id)
+}
+ngAfterViewChecked(){
+  this.getDescription()
 }
   getDescription(){
    
