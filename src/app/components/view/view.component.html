@@ -1,65 +1,82 @@
 <div class="flex pl-3 mt-3">
     <button class="px-4 py-2 h-[40px] w-fit text-sm bg-gray-500 text-white rounded-full hover:bg-gray-600" [routerLink]="['/']">
-        &lt;
+      &lt;
     </button>
-</div>
-
-<ng-container *ngIf="pokemon">
+  </div>
+  
+  <ng-container *ngIf="pokemon">
+    
     <div class="py-5">
-        <div class="container mx-auto p-5">
-            <div class="flex flex-wrap -mx-4">
-                <div class="w-full px-4">
-                   
-                    <div class="mt-2 text-center">
-                        <h1 class="text-3xl font-bold">{{ pokemon.name | titlecase }}</h1>
-                        <div class="mt-2">
-                            <span *ngFor="let type of pokemon.types" 
-                                  class="inline-block px-3 py-1 text-sm font-medium border rounded-full mr-2 bg-gray-200">
-                                {{ type.type.name | titlecase }}
-                            </span>
-                        </div>
-                    </div>
+      <div class="container mx-auto p-5">
+        <div class="flex flex-wrap -mx-4">
+          <div class="w-full px-4">
 
-
-                    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                       
-                        <ul class="divide-y border-0 p-4 bg-white shadow-md rounded-lg md:w-80 mx-auto">
-                            <li class="py-3 flex justify-between">Experience <b>{{ pokemon.base_experience }}</b></li>
-                            <li class="py-3 flex justify-between">Height <b>{{ pokemon.height }}</b></li>
-                            <li class="py-3 flex justify-between">Weight <b>{{ pokemon.weight }}</b></li>
-                        </ul>
-
-                       
-                        <div class="w-full flex justify-center">
-                            <img class="w-[300px] block" 
-                                 src="https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/other/official-artwork/{{ pokemon.id }}.png" 
-                                 alt="{{ pokemon.name }}">
-                        </div>
-                    </div>
-
-                    
-                    <p class="mt-4 text-center text-gray-600">{{ desc }}</p>
-                </div>
+            <div class="mt-2 text-center">
+              <h1 class="text-3xl font-bold {{ getType(pokemon) }} text-white p-2 rounded-lg">{{ pokemon.name | titlecase }}</h1>
+              <div class="mt-2">
+                <span *ngFor="let type of pokemon.types" 
+                      class="inline-block px-3 py-1 text-sm font-medium text-white rounded-full mr-2 {{ getTypeColor(type.type.name) }}">
+                  {{ type.type.name | titlecase }}
+                </span>
+              </div>
             </div>
-        </div>
-    </div>
+  
 
-    <!-- Evolutions Section -->
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+
+              <ul class="divide-y border-0 p-4 bg-white shadow-md rounded-lg md:w-80 mx-auto">
+                <li class="py-3 flex justify-between">Experience <b>{{ pokemon.base_experience }}</b></li>
+                <li class="py-3 flex justify-between">Height <b>{{ pokemon.height }}</b></li>
+                <li class="py-3 flex justify-between">Weight <b>{{ pokemon.weight }}</b></li>
+              </ul>
+  
+             
+              <div class="w-full flex justify-center">
+                <img class="w-[300px] block" 
+                     src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{ pokemon.id }}.png" 
+                     alt="{{ pokemon.name }}">
+              </div>
+            </div>
+  
+
+            <p class="mt-4 text-center text-gray-600">{{ desc }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    
     <div class="mt-8">
-        <h2 class="text-2xl font-semibold text-center">Evolutions</h2>
-        <div class="grid grid-cols-1 md:grid-cols-4  ml-auto gap-6 px-6 mt-6">
-            <div *ngFor="let evolution of pokemon.evolutions" 
-                 class="border border-gray-300 rounded-md shadow-lg p-4 flex flex-col items-center cursor-pointer hover:shadow-xl transition" 
-                 [routerLink]="['/view', evolution.name]" 
-                 (click)="setId(evolution.id)">
-                
-                <h4 class="text-lg font-semibold">{{ evolution.name | titlecase }}</h4>
-                <img class="h-36 w-auto mt-2" 
-                     src="https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/other/official-artwork/{{ evolution.id }}.png" 
-                     alt="{{ evolution.name }}">
-            </div>
+      <h2 class="text-2xl font-semibold text-center mb-6 {{ getType(pokemon) }} text-white p-2 rounded-lg">Evolutions</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 ml-auto gap-6 px-6 mt-6">
+        <div *ngFor="let evolution of pokemon.evolutions" 
+             class="border border-gray-300 rounded-md shadow-lg p-4 flex flex-col items-center cursor-pointer hover:shadow-xl transition" 
+             [routerLink]="['/view', evolution.name]" 
+             (click)="setId(evolution.id)">
+          <h4 class="text-lg font-semibold">{{ evolution.name | titlecase }}</h4>
+          <img class="h-36 w-auto mt-2" 
+               src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{ evolution.id }}.png" 
+               alt="{{ evolution.name }}">
         </div>
+      </div>
     </div>
-</ng-container>
+  
 
-<router-outlet></router-outlet>
+<div class="mt-8">
+    <h2 class="text-2xl font-semibold text-center mb-6">Stats</h2>
+    <div class="container mx-auto px-4">
+      <div *ngFor="let stat of pokemon.stats" class="mb-4">
+        <div class="flex justify-between items-center mb-1">
+          <span class="text-sm font-medium text-gray-700">{{ stat.stat.name | titlecase }}</span>
+          <span class="text-sm font-semibold text-gray-900">{{ stat.base_stat }}</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2.5">
+          <div class="h-2.5 rounded-full {{ getStatColor(stat.base_stat) }}" 
+               [ngStyle]="{ width: (stat.base_stat / 255) * 100 + '%' }"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </ng-container>
+  
+  <router-outlet></router-outlet>

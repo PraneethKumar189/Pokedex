@@ -2,13 +2,14 @@ import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiserviceService } from '../../services/apiservice.service';
-import { NgFor, NgIf, TitleCasePipe } from '@angular/common';
+import { NgFor, NgIf, NgStyle, TitleCasePipe } from '@angular/common';
 import { SharedService } from '../../services/shared.service';
+
 
 @Component({
   selector: 'app-view',
   standalone: true,
-  imports: [NgIf, TitleCasePipe, NgFor, RouterLink, RouterOutlet],
+  imports: [NgIf, TitleCasePipe, NgFor, RouterLink, RouterOutlet,NgStyle],
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css'],
 })
@@ -52,6 +53,7 @@ export class ViewComponent implements OnInit, OnDestroy {
       })
     );
     this.getDescription();
+   
   }
 
   ngOnDestroy(): void {
@@ -95,6 +97,7 @@ export class ViewComponent implements OnInit, OnDestroy {
     this.shared.updateData(id);
     console.log(id);
     this.getDescription();
+    console.log(this.pokemon)
   }
 
  
@@ -111,4 +114,63 @@ export class ViewComponent implements OnInit, OnDestroy {
       );
     }
   }
+  getType(pokemon: any): string {
+    const typeColors: { [key: string]: string } = {
+      'normal': 'bg-gray-300',
+      'fire': 'bg-orange-500',
+      'water': 'bg-blue-500',
+      'electric': 'bg-yellow-500',
+      'grass': 'bg-green-500',
+      'ice': 'bg-teal-400',
+      'fighting': 'bg-red-700',
+      'poison': 'bg-purple-500',
+      'ground': 'bg-yellow-700',
+      'flying': 'bg-indigo-500',
+      'psychic': 'bg-pink-500',
+      'bug': 'bg-lime-500',
+      'rock': 'bg-orange-500',
+      'ghost': 'bg-indigo-900',
+      'dragon': 'bg-indigo-700',
+      'dark': 'bg-gray-800',
+      'steel': 'bg-slate-500',
+      'fairy': 'bg-pink-300'
+    };
+  
+    if (pokemon.types && pokemon.types.length > 0) {
+      const type = pokemon.types[0].type.name;  
+      return typeColors[type] || 'bg-gray-400';  
+    }
+    return 'bg-gray-400';
+  }
+  
+  getTypeColor(type: string): string {
+    const typeColors: { [key: string]: string } = {
+      'normal': 'bg-gray-300',
+      'fire': 'bg-orange-500',
+      'water': 'bg-blue-500',
+      'electric': 'bg-yellow-500',
+      'grass': 'bg-green-500',
+      'ice': 'bg-teal-400',
+      'fighting': 'bg-red-700',
+      'poison': 'bg-purple-500',
+      'ground': 'bg-yellow-700',
+      'flying': 'bg-indigo-500',
+      'psychic': 'bg-pink-500',
+      'bug': 'bg-lime-500',
+      'rock': 'bg-orange-500',
+      'ghost': 'bg-indigo-900',
+      'dragon': 'bg-indigo-700',
+      'dark': 'bg-gray-800',
+      'steel': 'bg-slate-500',
+      'fairy': 'bg-pink-300'
+    };
+    return typeColors[type] || 'bg-gray-400';
+  }
+
+getStatColor(statValue: number): string {
+  if (statValue >= 200) return 'bg-green-500'; // High stats
+  if (statValue >= 150) return 'bg-yellow-500'; // Medium-high stats
+  if (statValue >= 100) return 'bg-orange-500'; // Medium stats
+  return 'bg-red-500'; // Low stats
+}
 }

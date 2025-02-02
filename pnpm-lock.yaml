@@ -9,22 +9,22 @@ importers:
   .:
     dependencies:
       '@angular/animations':
-        specifier: ^18.2.0
+        specifier: ^18.2.13
         version: 18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))
       '@angular/common':
         specifier: ^18.2.0
         version: 18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1)
       '@angular/compiler':
-        specifier: ^18.2.0
+        specifier: ^18.2.13
         version: 18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))
       '@angular/core':
-        specifier: ^18.2.0
+        specifier: ^18.2.13
         version: 18.2.13(rxjs@7.8.1)(zone.js@0.14.10)
       '@angular/forms':
         specifier: ^18.2.0
         version: 18.2.13(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.13(@angular/animations@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1)
       '@angular/platform-browser':
-        specifier: ^18.2.0
+        specifier: ^18.2.13
         version: 18.2.13(@angular/animations@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))
       '@angular/platform-browser-dynamic':
         specifier: ^18.2.0
@@ -35,9 +35,12 @@ importers:
       '@primeng/themes':
         specifier: ^19.0.5
         version: 19.0.5
+      primeicons:
+        specifier: ^7.0.0
+        version: 7.0.0
       primeng:
-        specifier: ^19.0.5
-        version: 19.0.5(5hxj423prfxsnujcqknbpf5xgi)
+        specifier: ^18.0.2
+        version: 18.0.2(5hxj423prfxsnujcqknbpf5xgi)
       rxjs:
         specifier: ~7.8.0
         version: 7.8.1
@@ -52,7 +55,7 @@ importers:
         specifier: ^18.2.10
         version: 18.2.14(@angular/compiler-cli@18.2.13(@angular/compiler@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.5.4))(@types/node@22.13.0)(chokidar@3.6.0)(karma@6.4.4)(tailwindcss@3.4.17)(typescript@5.5.4)(vite@5.4.14(@types/node@22.13.0)(less@4.2.0)(sass@1.77.6)(terser@5.31.6))
       '@angular/cli':
-        specifier: ^18.2.10
+        specifier: ^18.2.14
         version: 18.2.14(chokidar@3.6.0)
       '@angular/compiler-cli':
         specifier: ^18.2.0
@@ -3493,16 +3496,19 @@ packages:
     resolution: {integrity: sha512-6oz2beyjc5VMn/KV1pPw8fliQkhBXrVn1Z3TVyqZxU8kZpzEKhBdmCFqI6ZbmGtamQvQGuU1sgPTk8ZrXDD7jQ==}
     engines: {node: ^10 || ^12 || >=14}
 
-  primeng@19.0.5:
-    resolution: {integrity: sha512-3IMWTUykIyZpT7d+pD7KzB+68GcY8/xOV10V1Tf09cPkPuwXlFP+NAVGIqAOXBzkw+RmJksSBoa13bpS/fMo1g==}
+  primeicons@7.0.0:
+    resolution: {integrity: sha512-jK3Et9UzwzTsd6tzl2RmwrVY/b8raJ3QZLzoDACj+oTJ0oX7L9Hy+XnVwgo4QVKlKpnP/Ur13SXV/pVh4LzaDw==}
+
+  primeng@18.0.2:
+    resolution: {integrity: sha512-Tt4KmbstxRmrUdxvVjV1j/1L3SnN8QdkPdC5hRHWQjOCheX71BA0aQ7aTJ4CXZZuw6wiDKlb7Jrm0aqTixE7+A==}
     peerDependencies:
-      '@angular/animations': ^19.0.0
-      '@angular/cdk': ^19.0.0
-      '@angular/common': ^19.0.0
-      '@angular/core': ^19.0.0
-      '@angular/forms': ^19.0.0
-      '@angular/platform-browser': ^19.0.0
-      '@angular/router': ^19.0.0
+      '@angular/animations': ^17.0.0 || ^18.0.0
+      '@angular/cdk': ^17.0.0 || ^18.0.0
+      '@angular/common': ^17.0.0 || ^18.0.0
+      '@angular/core': ^17.0.0 || ^18.0.0
+      '@angular/forms': ^17.0.0 || ^18.0.0
+      '@angular/platform-browser': ^17.0.0 || ^18.0.0
+      '@angular/router': ^17.0.0 || ^18.0.0
       rxjs: ^6.0.0 || ^7.8.1
 
   proc-log@4.2.0:
@@ -8102,7 +8108,9 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  primeng@19.0.5(5hxj423prfxsnujcqknbpf5xgi):
+  primeicons@7.0.0: {}
+
+  primeng@18.0.2(5hxj423prfxsnujcqknbpf5xgi):
     dependencies:
       '@angular/animations': 18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))
       '@angular/cdk': 19.1.2(@angular/common@18.2.13(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.13(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1)

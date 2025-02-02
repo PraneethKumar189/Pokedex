@@ -74,9 +74,7 @@ loadmore():void {
 
 getType(pokemon:any):string{
   
- // const info=this.api.getType(pokemon);
-  //console.log(pokemon.type)
-  //return this.api.getType(pokemon);
+ 
   return this.typeColorMap[pokemon.types[0].type.name] || 'bg-gray-500';
 }
 setId(id:any)
