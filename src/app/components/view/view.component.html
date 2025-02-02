@@ -1,45 +1,62 @@
+<div class="flex pl-3 mt-3">
+    <button class="px-4 py-2 h-[40px] w-fit text-sm bg-gray-500 text-white rounded-full hover:bg-gray-600" [routerLink]="['/']">
+        &lt;
+    </button>
+</div>
+
 <ng-container *ngIf="pokemon">
     <div class="py-5">
         <div class="container mx-auto p-5">
             <div class="flex flex-wrap -mx-4">
                 <div class="w-full px-4">
-                    <div class="mt-2">
-                        <h1>{{pokemon.name | titlecase}}</h1>
-                        <span *ngFor="let type of pokemon.types" class="inline-block px-2 py-1 text-sm font-medium border rounded-full mr-1">
-                            {{type.type.name | titlecase}}
-                        </span>
-                    </div>
-                    <div class="flex flex-col md:flex-row">
-                        <ul class="divide-y border-0 mt-4" style="width: 20rem;">
-                            <li class="py-2">Experience <b class="float-end">{{pokemon.base_experience}}</b></li>
-                            <li class="py-2">Height <b class="float-end">{{pokemon.height}}</b></li>
-                            <li class="py-2">Weight <b class="float-end">{{pokemon.weight}}</b></li>
-                        </ul>
-                        <div class="w-full px-4"> 
-                            <img class="w-full block mx-auto" style="width: 300px;" 
-                                src="https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/other/official-artwork/{{pokemon.id}}.png" 
-                                alt=""> 
-                            <p>{{desc}}</p>
+                   
+                    <div class="mt-2 text-center">
+                        <h1 class="text-3xl font-bold">{{ pokemon.name | titlecase }}</h1>
+                        <div class="mt-2">
+                            <span *ngFor="let type of pokemon.types" 
+                                  class="inline-block px-3 py-1 text-sm font-medium border rounded-full mr-2 bg-gray-200">
+                                {{ type.type.name | titlecase }}
+                            </span>
                         </div>
                     </div>
-                    <div class="flex align-middle mt-7 justify-center">
-                        <button class="px-4 py-2 h-[40px] w-fit text-sm bg-gray-500 text-white rounded-full hover:bg-gray-600" [routerLink]="['/']">
-                            Home
-                        </button>
+
+
+                    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                       
+                        <ul class="divide-y border-0 p-4 bg-white shadow-md rounded-lg md:w-80 mx-auto">
+                            <li class="py-3 flex justify-between">Experience <b>{{ pokemon.base_experience }}</b></li>
+                            <li class="py-3 flex justify-between">Height <b>{{ pokemon.height }}</b></li>
+                            <li class="py-3 flex justify-between">Weight <b>{{ pokemon.weight }}</b></li>
+                        </ul>
+
+                       
+                        <div class="w-full flex justify-center">
+                            <img class="w-[300px] block" 
+                                 src="https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/other/official-artwork/{{ pokemon.id }}.png" 
+                                 alt="{{ pokemon.name }}">
+                        </div>
                     </div>
+
+                    
+                    <p class="mt-4 text-center text-gray-600">{{ desc }}</p>
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 
-    <div class="shadow rounded-md m-6 md:min-w-fit h-max w-auto mb-3 p-4" *ngFor="let evolution of pokemon.evolutions">
-        <div [routerLink]="['/view', evolution.name]" (click)="setId(evolution.id)">
-            <div >
-                <h4>{{evolution.name | titlecase}}</h4>
-                <div class="flex align-middle justify-center">
-                    <img class="h-52  w-auto" src="https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/other/official-artwork/{{evolution.id}}.png" alt="">
-                </div>
+    <!-- Evolutions Section -->
+    <div class="mt-8">
+        <h2 class="text-2xl font-semibold text-center">Evolutions</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4  ml-auto gap-6 px-6 mt-6">
+            <div *ngFor="let evolution of pokemon.evolutions" 
+                 class="border border-gray-300 rounded-md shadow-lg p-4 flex flex-col items-center cursor-pointer hover:shadow-xl transition" 
+                 [routerLink]="['/view', evolution.name]" 
+                 (click)="setId(evolution.id)">
                 
+                <h4 class="text-lg font-semibold">{{ evolution.name | titlecase }}</h4>
+                <img class="h-36 w-auto mt-2" 
+                     src="https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/other/official-artwork/{{ evolution.id }}.png" 
+                     alt="{{ evolution.name }}">
             </div>
         </div>
     </div>

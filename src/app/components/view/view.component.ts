@@ -12,7 +12,7 @@ import { SharedService } from '../../services/shared.service';
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css'],
 })
-export class ViewComponent implements OnInit, OnDestroy, DoCheck {
+export class ViewComponent implements OnInit, OnDestroy {
   pokemon: any = null;
   subscriptions: Subscription[] = [];
   desc: string = '';
@@ -94,11 +94,10 @@ export class ViewComponent implements OnInit, OnDestroy, DoCheck {
   setId(id: any): void {
     this.shared.updateData(id);
     console.log(id);
-  }
-
-  ngDoCheck(): void {
     this.getDescription();
   }
+
+ 
 
   getDescription(): void {
     if (this.pokemon) {
